@@ -29,6 +29,7 @@ public class MjenjacnicaRadi implements KursMetode {
 		for (int i = 0; i < kursnaLista.size(); i++) {
 			if(kursnaLista.get(i).getNaziv().equals(naziv) && kursnaLista.get(i).getDatumUnosaKursa() == datum){
 				kursnaLista.remove(i);
+				return;
 			}
 		}
 	}
