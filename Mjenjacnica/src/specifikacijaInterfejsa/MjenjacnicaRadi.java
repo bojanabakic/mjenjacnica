@@ -10,7 +10,7 @@ public class MjenjacnicaRadi implements KursMetode {
 	
 	@Override
 	public void dodajKurs(String naziv, String skraceniNaziv, GregorianCalendar datum, double kupovniKurs,
-			double prodajniKurs, double srednjiKurs) throws Exception {
+			double prodajniKurs, double srednjiKurs){
 		Valuta novaValuta = new Valuta();
 		novaValuta.setNaziv(naziv);
 		novaValuta.setSkraceniNaziv(skraceniNaziv);
@@ -21,7 +21,7 @@ public class MjenjacnicaRadi implements KursMetode {
 		
 		if(!kursnaLista.contains(novaValuta)){
 			kursnaLista.add(novaValuta);
-		} else throw new Exception("Kurs je vec unijet.");
+		} else throw new RuntimeException();
 	}
 
 	@Override
