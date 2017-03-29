@@ -10,7 +10,7 @@ public class MjenjacnicaRadi implements KursMetode {
 	
 	@Override
 	public void dodajKurs(String naziv, String skraceniNaziv, GregorianCalendar datum, double kupovniKurs,
-			double prodajniKurs, double srednjiKurs) {
+			double prodajniKurs, double srednjiKurs){
 		Valuta novaValuta = new Valuta();
 		novaValuta.setNaziv(naziv);
 		novaValuta.setSkraceniNaziv(skraceniNaziv);
@@ -19,19 +19,27 @@ public class MjenjacnicaRadi implements KursMetode {
 		novaValuta.setProdajniKurs(prodajniKurs);
 		novaValuta.setSrednjiKurs(srednjiKurs);
 		
-		kursnaLista.add(novaValuta);
+		if(!kursnaLista.contains(novaValuta)){
+			kursnaLista.add(novaValuta);
+		} else throw new RuntimeException();
 	}
 
 	@Override
 	public void obrisiKurs(String naziv, GregorianCalendar datum) {
-		// TODO Auto-generated method stub
-
+		for (int i = 0; i < kursnaLista.size(); i++) {
+			if(kursnaLista.get(i).getNaziv().equals(naziv) && kursnaLista.get(i).getDatumUnosaKursa() == datum){
+				kursnaLista.remove(i);
+			}
+		}
 	}
 
 	@Override
 	public Valuta vratiKurs(String naziv, GregorianCalendar datum) {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < kursnaLista.size(); i++) {
+			if(kursnaLista.get(i).getNaziv().equals(naziv) && kursnaLista.get(i).getDatumUnosaKursa() == datum){
+				return kursnaLista.get(i);
+			}else throw new RuntimeException();
+		}
 		return null;
 	}
-
 }
