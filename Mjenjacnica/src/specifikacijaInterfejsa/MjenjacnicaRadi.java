@@ -1,16 +1,25 @@
 package specifikacijaInterfejsa;
 
 import java.util.GregorianCalendar;
+import java.util.LinkedList;
 
 import valuta.Valuta;
 
 public class MjenjacnicaRadi implements KursMetode {
-
+	LinkedList<Valuta> kursnaLista = new LinkedList<Valuta>();
+	
 	@Override
 	public void dodajKurs(String naziv, String skraceniNaziv, GregorianCalendar datum, double kupovniKurs,
 			double prodajniKurs, double srednjiKurs) {
-		// TODO Auto-generated method stub
-
+		Valuta novaValuta = new Valuta();
+		novaValuta.setNaziv(naziv);
+		novaValuta.setSkraceniNaziv(skraceniNaziv);
+		novaValuta.setDatumUnosaKursa(datum);
+		novaValuta.setKupovniKurs(kupovniKurs);
+		novaValuta.setProdajniKurs(prodajniKurs);
+		novaValuta.setSrednjiKurs(srednjiKurs);
+		
+		kursnaLista.add(novaValuta);
 	}
 
 	@Override
